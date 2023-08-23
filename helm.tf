@@ -32,8 +32,9 @@ resource "helm_release" "cluster_autoscaler" {
     value = aws_iam_role.kubernetes_cluster_autoscaler[0].arn
   }
 
+  # see https://registry.terraform.io/providers/hashicorp/helm/latest/docs/resources/release
   values = [
-    yamlencode(var.settings)
+    "${yamlencode(var.settings)}"
   ]
 
 }
